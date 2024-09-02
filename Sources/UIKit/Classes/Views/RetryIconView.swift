@@ -1,6 +1,6 @@
 import UIKit
 
-final class RetryIconView: View {
+final class RetryIconView: UIView {
     //
 //    isOpaque
 //    This property is a horse of a different color; changing it has no effect on the view’s appearance. Rather, it is a hint to the drawing system. If a view is com‐ pletely filled with opaque material and its alpha is 1.0, so that the view has no effective transparency, then it can be drawn more efficiently (with less drag on performance) if you inform the drawing system of this fact by setting its isOpaque to true. Otherwise, you should set its isOpaque to false. The isOpaque value is not changed for you when you set a view’s backgroundColor or alpha! Setting it correctly is entirely up to you; the default, perhaps surprisingly, is true
@@ -9,6 +9,10 @@ final class RetryIconView: View {
         backgroundColor = nil
         isOpaque = false
         tintColor = .black
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func draw(_ rect: CGRect) {
