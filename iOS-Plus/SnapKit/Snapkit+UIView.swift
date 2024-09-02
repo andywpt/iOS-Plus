@@ -1,4 +1,4 @@
-#if canImport(SnapKit)
+#if canImport(SnapKit) && canImport(UIKit)
 import SnapKit
 import UIKit
 
