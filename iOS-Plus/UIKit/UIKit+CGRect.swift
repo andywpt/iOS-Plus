@@ -1,14 +1,6 @@
 import UIKit
 
-extension CGSize {
-    /// Scales up a point-size CGSize into its pixel representation.
-    var pixelSize: CGSize {
-        let scale = UIScreen.shared.scale
-        return CGSize(width: width * scale, height: height * scale)
-    }
-}
-
-public extension CGRect {
+extension CGRect {
     /// Kinda like AVFoundation.AVMakeRect, but handles tall-skinny aspect ratios differently.
     /// Returns a rectangle of the same aspect ratio, but scaleAspectFit inside the other rectangle.
     static func makeRect(aspectRatio: CGSize, insideRect rect: CGRect) -> CGRect {

@@ -1,5 +1,4 @@
 #if canImport(SDWebImage)
-
 import SDWebImage
 import UIKit
 
