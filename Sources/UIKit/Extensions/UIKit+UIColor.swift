@@ -29,4 +29,8 @@ extension UIColor {
             alpha: alpha
         )
     }
+    
+    static var random: UIColor {
+        .init(hex: Int.random(in: 0 ... 16_777_215))
+    }
 }

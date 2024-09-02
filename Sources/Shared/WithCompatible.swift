@@ -3,7 +3,7 @@ import CoreGraphics
 // https://blog.eppz.eu/declarative-uikit-with-10-lines-of-code
 protocol WithCompatible {}
 
-extension WithCompatible where Self: AnyObject {
+extension WithCompatible {
     @discardableResult
     func with(_ configuration: (inout Self) -> Void) -> Self {
         var copy = self
@@ -15,3 +15,4 @@ extension WithCompatible where Self: AnyObject {
 extension NSObject: WithCompatible {}
 extension CGPath: WithCompatible {}
 extension CGContext: WithCompatible {}
+extension CGRect: WithCompatible {}

@@ -17,6 +17,9 @@ extension UIViewController {
         }
         set {
             objc_setAssociatedObject(self, AssociatedKeys.transition, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            if newValue != nil {
+                self.modalPresentationStyle = .custom
+            }
             transitioningDelegate = newValue
         }
     }
