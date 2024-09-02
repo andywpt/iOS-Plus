@@ -1,5 +1,9 @@
 # Ignore everything
+.DS_Store
 /*
 
-# Not these directories
+# Except these directories
 !iOS-Plus/
+
+# Except these files
+!.gitignore
