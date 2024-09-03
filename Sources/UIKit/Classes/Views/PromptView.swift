@@ -2,7 +2,7 @@
 import UIKit
 import SnapKit
 
-final class PromptView: UIView {
+private final class PromptView: UIView {
     
     private init(views: [UIView], padding: UIEdgeInsets = .init(top: 12, left: 16, bottom: 16, right: 16)) {
         super.init(frame: .zero)
@@ -112,5 +112,6 @@ extension UIView {
         PromptView.showError(in: self, message: message)
     }
     
+//    AlertView.show(text: "已加入收藏", image: UIImage(systemName: "heart")?.withConfiguration(UIImage.SymbolConfiguration(weight: .thin)), in: mainView)
 }
 #endif
