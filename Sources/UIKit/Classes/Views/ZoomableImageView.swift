@@ -53,7 +53,7 @@ class ZoomableImageView: UIImageView {
             let currentScale = frame.size.width / bounds.size.width
             let newScale = currentScale * sender.scale
             if newScale > 1 {
-                guard let currentWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+                let currentWindow = UIWindow.keyWindow
                 didStartZooming?()
                 
                 overlayView = UIView(frame: currentWindow.bounds)
