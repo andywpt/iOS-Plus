@@ -31,14 +31,13 @@ private final class PromptView: UIView {
         topView.subviews
             .compactMap{ $0 as? PromptView }
             .forEach { $0.dismiss(animated: false) }
-        
         topView.addSubview(self){
             $0.center.equalTo(topView.safeAreaLayoutGuide)
         }
         if animated {
-            self.alpha = 0
-            UIView.animate(withDuration: 0.2) {
-                self.alpha = 1
+            self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.92, initialSpringVelocity: 0) {
+                self.transform = .identity
             }
         }
     }
@@ -103,14 +102,14 @@ extension PromptView {
         imageView.addConstraints {
             $0.size.equalTo(32)
         }
-        let toast = PromptView(views: [imageView,label]).with {
+        let prompt = PromptView(views: [imageView,label]).with {
             $0.backgroundColor = backgroundColor
         }
-        toast.show(in: containerView)
+        prompt.show(in: containerView)
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            toast.dismiss()
+            prompt.dismiss()
         }
-        return toast
+        return prompt
     }
 }
 
