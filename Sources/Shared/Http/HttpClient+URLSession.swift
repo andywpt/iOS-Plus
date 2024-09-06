@@ -7,5 +7,4 @@ extension URLSession: HttpClient {
         let statusCode = (response as! HTTPURLResponse).statusCode
         return (statusCode,data)
     }
-
 }

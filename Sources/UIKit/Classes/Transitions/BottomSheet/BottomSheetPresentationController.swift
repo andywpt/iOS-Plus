@@ -41,7 +41,7 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
-        print("🍄frameOfPresentedViewInContainerView called")
+        print("🍄 frameOfPresentedViewInContainerView called")
         guard let presentedView else { return super.frameOfPresentedViewInContainerView }
         switch configuration.sheetHeight {
         case .estimated:

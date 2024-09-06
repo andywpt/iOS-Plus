@@ -32,11 +32,12 @@ private final class PromptView: UIView {
             .compactMap{ $0 as? PromptView }
             .forEach { $0.dismiss(animated: false) }
         topView.addSubview(self){
-            $0.center.equalTo(topView.safeAreaLayoutGuide)
+            $0.centerX.equalTo(topView.safeAreaLayoutGuide)
+            $0.centerY.equalTo(topView.safeAreaLayoutGuide)
         }
         if animated {
             self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.92, initialSpringVelocity: 0) {
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.92, initialSpringVelocity: 0) {
                 self.transform = .identity
             }
         }
