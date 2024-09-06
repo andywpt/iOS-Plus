@@ -8,15 +8,19 @@ protocol TabViewModel {
     var badgeText: AnyPublisher<String?,Never>? { get }
 }
 
-final class TabViewController: ContentWrapperController {
+class TabNavigationController: MinimalBackButtonNavigationController {
     
     private let viewModel: any TabViewModel
     private var subscriptions: Set<AnyCancellable> = []
     
     init(viewModel: any TabViewModel){
         self.viewModel = viewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
         bindViewModel()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
     }
     
     private func bindViewModel(){
