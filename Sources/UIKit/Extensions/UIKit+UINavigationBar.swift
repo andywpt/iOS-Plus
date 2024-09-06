@@ -1,53 +1,62 @@
 import UIKit
 
 extension UINavigationBar {
-    var shadowColor: UIColor? {
-        get { standardAppearance.shadowColor }
-        set {
-            let appearance = standardAppearance.with { $0.shadowColor = newValue }
-            setAppearance(appearance)
-        }
-    }
-
-    // Do not use the backgroundColor property to configure the navigation bar
-    var barBackgroundColor: UIColor? {
-        get { standardAppearance.backgroundColor }
-        set {
-            let appearance = standardAppearance.with { $0.backgroundColor = newValue }
-            setAppearance(appearance)
-        }
-    }
-
-    func setDefaultAppearance() {
-        let defaultAppearance = UINavigationBarAppearance().with {
+    /// Do not use the backgroundColor property to configure the navigation bar
+    func setBackgroundColor(_ color: UIColor){
+        standardAppearance.with {
             $0.configureWithOpaqueBackground()
-            $0.backgroundColor = .white
-            $0.titleTextAttributes = [
-                .foregroundColor: UIColor.black,
-                .font: UIFont.systemFont(ofSize: 18, weight: .medium),
-            ]
-            $0.buttonAppearance.normal.titleTextAttributes = [
-                .foregroundColor: UIColor.systemBlue,
-                .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            ]
-            $0.buttonAppearance.highlighted.titleTextAttributes = [
-                .foregroundColor: UIColor.systemBlue,
-                .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            ]
-            let backImage = UIImage(systemName: "arrow.left")?
-                .withTintColor(.black, renderingMode: .alwaysOriginal)
-                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 16, weight: .medium))
-            $0.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+            $0.backgroundColor = color
         }
-        setAppearance(defaultAppearance)
+        updateAllAppearances()
     }
 
-    private func setAppearance(_ appearance: UINavigationBarAppearance) {
-        standardAppearance = appearance
-        compactAppearance = appearance
-        scrollEdgeAppearance = appearance
+    func setShadowColor(_ color: UIColor){
+        standardAppearance.with { $0.shadowColor = color }
+        updateAllAppearances()
+    }
+    
+    func setBackButtonImage(_ image: UIImage?){
+        standardAppearance.with {
+            $0.setBackIndicatorImage(image, transitionMaskImage: image)
+        }
+        updateAllAppearances()
+    }
+    
+    func setBarButtonItemFont(_ font: UIFont) {
+        standardAppearance.with {
+            $0.buttonAppearance.normal.titleTextAttributes[.font] = font
+            $0.buttonAppearance.highlighted.titleTextAttributes[.font] = font
+        }
+        updateAllAppearances()
+    }
+    
+    func setBarButtonItemTintColor(_ color: UIColor) {
+        standardAppearance.with {
+            $0.buttonAppearance.normal.titleTextAttributes[.foregroundColor] = color
+            $0.buttonAppearance.highlighted.titleTextAttributes[.foregroundColor] = color
+        }
+        updateAllAppearances()
+    }
+    
+    func setTitleFont(_ font: UIFont){
+        standardAppearance.with {
+            $0.titleTextAttributes[.font] = font
+        }
+        updateAllAppearances()
+    }
+    
+    func setTitleColor(_ color: UIColor){
+        standardAppearance.with {
+            $0.titleTextAttributes[.foregroundColor] = color
+        }
+        updateAllAppearances()
+    }
+
+    private func updateAllAppearances() {
+        compactAppearance = standardAppearance
+        scrollEdgeAppearance = standardAppearance
         if #available(iOS 15.0, *) {
-            compactScrollEdgeAppearance = appearance
+            compactScrollEdgeAppearance = standardAppearance
         }
     }
 }

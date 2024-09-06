@@ -16,11 +16,9 @@ extension UIViewController {
             objc_getAssociatedObject(self, AssociatedKeys.transition) as? (any UIViewControllerTransitioningDelegate)
         }
         set {
-            objc_setAssociatedObject(self, AssociatedKeys.transition, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            if newValue != nil {
-                self.modalPresentationStyle = .custom
-            }
+            if newValue != nil { modalPresentationStyle = .custom }
             transitioningDelegate = newValue
+            objc_setAssociatedObject(self, AssociatedKeys.transition, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

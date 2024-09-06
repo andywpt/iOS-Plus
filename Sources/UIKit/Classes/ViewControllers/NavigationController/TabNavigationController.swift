@@ -19,7 +19,8 @@ class TabNavigationController: MinimalBackButtonNavigationController {
         bindViewModel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
         fatalError()
     }
     
