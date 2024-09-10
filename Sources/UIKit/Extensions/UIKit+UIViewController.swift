@@ -21,4 +21,12 @@ extension UIViewController {
             objc_setAssociatedObject(self, AssociatedKeys.transition, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    var isBeingPresented: Bool {
+        return presentingViewController != nil
+    }
+    
+    var canPresentViewController: Bool {
+        return presentedViewController == nil
+    }
 }

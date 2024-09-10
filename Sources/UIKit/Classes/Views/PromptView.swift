@@ -71,7 +71,7 @@ extension PromptView {
             image: image,
             in: containerView,
             foregroundColor: UIColor.white,
-            backgroundColor: UIColor(hex: 0x262626)
+            backgroundColor: .hex(0x262626)
         )
     }
     
@@ -81,7 +81,7 @@ extension PromptView {
         image: UIImage?,
         in containerView: UIView,
         foregroundColor: UIColor = .black,
-        backgroundColor: UIColor = UIColor(hex: 0xF6F6F6),
+        backgroundColor: UIColor = .hex(0xF6F6F6),
         duration: TimeInterval = 1.5
     ) -> PromptView {
         
